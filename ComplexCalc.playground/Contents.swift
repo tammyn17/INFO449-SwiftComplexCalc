@@ -28,30 +28,72 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
-    func add (lhs: Int, rhs: Int) -> Int {
+    func add(lhs: Int, rhs: Int) -> Int {
         return lhs + rhs
     }
-
-    func subtract (lhs: Int, rhs: Int) -> Int {
+    
+    func subtract(lhs: Int, rhs: Int) -> Int {
         return lhs - rhs
     }
-
-    func multiply (lhs: Int, rhs: Int) -> Int {
+    
+    func multiply(lhs: Int, rhs: Int) -> Int {
         return lhs * rhs
     }
-
-    func divide (lhs: Int, rhs: Int) -> Int {
+    
+    func divide(lhs: Int, rhs: Int) -> Int {
         return lhs / rhs
     }
     
+    func add(_ nums: [Int]) -> Int {
+        return nums.reduce(0, +)
+    }
     
+    func multiply(_ nums: [Int]) -> Int {
+        return nums.reduce(1, *)
+    }
+    
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+        return op(lhs, rhs)
+    }
+    
+    func count(_ nums: [Int]) -> Int {
+        return nums.count
+    }
+    
+    func avg(_ nums: [Int]) -> Int {
+        let sum = nums.reduce(0, +)
+        return sum / nums.count
+    }
+    
+    func mathOp(args: [Int], beg : Int, op: (Int, Int) -> Int) -> Int {
+        return args.reduce(beg, op)
+    }
+    
+    func add(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        guard let x1 = lhs["x"], let y1 = lhs["y"],
+              let x2 = rhs["x"], let y2 = rhs["y"] else {
+            return
+        }
+        return ["x": x1 + x2, "y": y1 + y2]
+    }
+    
+    func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        guard let x1 = lhs["x"], let y1 = lhs["y"],
+              let x2 = rhs["x"], let y2 = rhs["y"] else {
+            return
+        }
+        return ["x": x1 - x2, "y": y1 - y2]
+    }
 }
+
+
+    
+
+
+
+
 //: Don't change the name of this object (`calc`); it's used in all the tests.
 let calc = Calculator()
-
-
-
-
 //: ## Extra credit
 //: Add in your own tests here; they should not test something that is already covered by an existing test, but rest assured that I have not tested every boundary condition. Feel free to explore a variety of ideas, and do not be surprised if you come up with a possibility that isn't covered in my requirements! (I have been known to give extra credit if you find one!)
 //:
