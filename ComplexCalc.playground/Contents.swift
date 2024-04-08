@@ -69,10 +69,18 @@ class Calculator {
         return args.reduce(beg, op)
     }
     
+    func add(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 + rhs.0, lhs.1 + rhs.1)
+    }
+    
+    func subtract(lhs:(Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 - rhs.0, lhs.1 - rhs.1)
+    }
+    
     func add(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
         guard let x1 = lhs["x"], let y1 = lhs["y"],
               let x2 = rhs["x"], let y2 = rhs["y"] else {
-            return
+            return [:]
         }
         return ["x": x1 + x2, "y": y1 + y2]
     }
@@ -80,18 +88,11 @@ class Calculator {
     func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
         guard let x1 = lhs["x"], let y1 = lhs["y"],
               let x2 = rhs["x"], let y2 = rhs["y"] else {
-            return
+            return [:]
         }
         return ["x": x1 - x2, "y": y1 - y2]
     }
 }
-
-
-    
-
-
-
-
 //: Don't change the name of this object (`calc`); it's used in all the tests.
 let calc = Calculator()
 //: ## Extra credit
